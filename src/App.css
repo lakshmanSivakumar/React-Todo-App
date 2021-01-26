@@ -1,38 +1,109 @@
-.App {
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-size: 14px;
+}
+
+.navbar{
+  display: flex;
+  position: fixed;
+  font-size: 1.5rem;
+  border-bottom: 2px solid black;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: grey;
+  
+}
+.nav-brand{
+  padding: 0.5rem;
+  font-size: 2.5rem;
+  border: 2px solid black;
+  font-weight: bold;
+  background-color: burlywood;
+}
+.nav-title{
   text-align: center;
+  padding-left: 1.5rem;
+  color: whitesmoke;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container{
+  padding-top: 6rem;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 45% 45%;
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
+  justify-content: center;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.todo{
+  width: 100%;
+  height: fit-content;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
+  border: 1px solid black;
+  flex-wrap: wrap;
+}
+.content{
+  font-size: 1rem;
+  padding: 0.75rem;
+  width: 100%;
+  
+}
+.time{
+  width: 100%;
+  font-size: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.actions{
+  width: 100%;
+  padding: .4rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-column-gap: 0.2rem;
+  grid-row-gap: 0.2rem;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
-
-.App-link {
-  color: #61dafb;
+.edit , .delete , .completed{
+  width: 100%;
+  font-size: 0.7rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  letter-spacing: 0.1rem;
+  text-align: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.edit{
+  color: whitesmoke;
+  background-color: rgb(91, 91, 255);
+}
+.delete{
+  color: whitesmoke;
+  background-color: rgb(255, 50, 50);
+}
+.completed{
+  color: whitesmoke;
+  background-color: green;
+  grid-column: 1/3;
+}
+.add-todo{
+  border: none;
+  width: 100%;
+  padding: 0.6rem .5rem .6rem .5rem;
+  letter-spacing: .5rem;
+  font-size: 1rem;
+  background-color: rgb(91, 91, 255);
+  color: whitesmoke;
+  position: fixed;
+  bottom: 0px;
+}
+html{
+  scroll-behavior: smooth;
 }

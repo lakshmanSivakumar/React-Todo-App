@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import Todos from './components/Todos/index'
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [isOpen,setIsOpen] = useState(false);
+  const addTodo = () =>{
+    let App = document.getElementsByClassName('App');
+    App.classList.toggle('.modal')
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav className="navbar">
+            <div className="nav-brand">
+                T
+            </div>
+            <div className="nav-title">
+                Prem Todo
+            </div>
+      </nav>
+      <Todos/>
+      <button class="add-todo" onClick={addTodo}>ADD TODO</button>  
     </div>
   );
 }

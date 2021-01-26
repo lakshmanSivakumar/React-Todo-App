@@ -1,27 +1,30 @@
-import Todos from './components/Todos/index'
-import './App.css';
 import { useState } from 'react';
 
+import Todos from './Components/Todos';
+import AddTodo from './Components/AddTodo';
+
+import hamburger from './images/hamburger.png';
+import './App.css';
+
 function App() {
-  const [isOpen,setIsOpen] = useState(false);
-  const addTodo = () =>{
-    let App = document.getElementsByClassName('App');
-    App.classList.toggle('.modal')
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleAddTodo = () => {
+    setIsOpen(!isOpen);
   }
+
   return (
     <div className="App">
-      <nav className="navbar">
-            <div className="nav-brand">
-                T
-            </div>
-            <div className="nav-title">
-                Prem Todo
-            </div>
-      </nav>
-      <Todos/>
-      <button class="add-todo" onClick={addTodo}>ADD TODO</button>  
+      <div className="nav">
+            <p className="title">React Todo</p>
+            <img className="hamburger" src={hamburger} alt="hamburger"></img>
+      </div>
+      <Todos handleAddTodo={handleAddTodo}/>
+      {isOpen && <AddTodo handleAddTodo={handleAddTodo}/>}
     </div>
   );
+
 }
 
 export default App;

@@ -1,109 +1,182 @@
-*{
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
 }
 
-body{
-  font-size: 14px;
+html {
+  scroll-behavior: smooth;
 }
 
-.navbar{
+.nav {
   display: flex;
-  position: fixed;
-  font-size: 1.5rem;
-  border-bottom: 2px solid black;
-  width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: grey;
-  
-}
-.nav-brand{
-  padding: 0.5rem;
-  font-size: 2.5rem;
-  border: 2px solid black;
-  font-weight: bold;
-  background-color: burlywood;
-}
-.nav-title{
-  text-align: center;
-  padding-left: 1.5rem;
-  color: whitesmoke;
-}
-.container{
-  padding-top: 6rem;
-  height: 100vh;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 45% 45%;
-  grid-column-gap: 1.5rem;
-  grid-row-gap: 1.5rem;
-  justify-content: center;
-}
-.todo{
-  width: 100%;
-  height: fit-content;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  flex-wrap: wrap;
-}
-.content{
-  font-size: 1rem;
-  padding: 0.75rem;
-  width: 100%;
-  
-}
-.time{
-  width: 100%;
-  font-size: 0.75rem;
-  padding: 0.5rem 0.75rem;
-}
-.actions{
-  width: 100%;
-  padding: .4rem;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-column-gap: 0.2rem;
-  grid-row-gap: 0.2rem;
+  border-bottom: 3px solid #eeeeee;
   align-items: center;
   justify-content: space-between;
+  padding: 0% 5%;
 }
-.edit , .delete , .completed{
+
+.title {
+  font-size: 1.5em;
+  color:#0072B5;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hamburger {
+  cursor: pointer;
+}
+
+.addTodoBtnDiv {
   width: 100%;
-  font-size: 0.7rem;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.5rem 0.5rem;
-  letter-spacing: 0.1rem;
   text-align: center;
 }
-.edit{
-  color: whitesmoke;
-  background-color: rgb(91, 91, 255);
+
+.addTodoBtn {
+  width: fit-content;
+  margin-top: 40px;
+  border: 3px solid teal;
+  padding: 10px 15px;
+  outline: none;
+  color: teal;
+  font-weight: bold;
+  letter-spacing: 2px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 1.1em;
 }
-.delete{
-  color: whitesmoke;
-  background-color: rgb(255, 50, 50);
+
+.addTodoBtn:hover {
+  border: 3px solid#0072B5;
+  background-color:#0072B5;
+  color: white;
 }
-.completed{
-  color: whitesmoke;
-  background-color: green;
-  grid-column: 1/3;
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  justify-content: center;
+  padding: 40px;
 }
-.add-todo{
-  border: none;
-  width: 100%;
-  padding: 0.6rem .5rem .6rem .5rem;
-  letter-spacing: .5rem;
-  font-size: 1rem;
-  background-color: rgb(91, 91, 255);
-  color: whitesmoke;
+
+.todo {
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column wrap;
+  border: 3px solid #eeeeee;
+  padding: 20px;
+}
+
+.content {
+  font-size: 1.2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.createdAt {
+  font-size: 1.2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.checkMarkDiv{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.trash, .edit, .checkMark {
+  cursor: pointer;
+}
+
+.popUpBox {
   position: fixed;
-  bottom: 0px;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-html{
-  scroll-behavior: smooth;
+
+.box {
+  height: 40vh;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-items: center;  
+  padding: 40px 40px 60px 40px;
+}
+
+.close {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  text-align: center;
+  border: 2px solid  grey;
+  color: grey;
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+.input {
+  font-size: 1.1em;
+  padding: 10px 15px;
+  border: 3px solid #eeeeee;
+  outline: none;
+  transition: 0.3s ease-in-out;
+}
+
+.input:focus {
+  border: 3px solid #0072B5;
+}
+
+.add {
+  width: fit-content;
+  border: 3px solid #eeeeee;
+  padding: 10px 15px;
+  outline: none;
+  color: #0072B5;
+  font-weight: bold;
+  letter-spacing: 2px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 1.1em;
+}
+
+.add:hover {
+  border: 3px solid#0072B5;
+  background-color:#0072B5;
+  color: white;
+}
+
+@media screen and (min-width: 600px) {
+
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media screen and (min-width: 992px) {
+
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
 }

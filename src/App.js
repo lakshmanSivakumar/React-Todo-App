@@ -9,7 +9,7 @@ import './App.css';
 function App() {
 
   const [isOpen, setIsOpen] = useState(false);
-
+      
   const handleAddTodo = () => {
     setIsOpen(!isOpen);
   }
@@ -21,7 +21,7 @@ function App() {
             <img className="hamburger" src={hamburger} alt="hamburger"></img>
       </div>
       <Todos handleAddTodo={handleAddTodo}/>
-      {isOpen && <AddTodo handleAddTodo={handleAddTodo}/>}
+      {isOpen && <AddTodo setIsOpen={setIsOpen} handleAddTodo={handleAddTodo}/>}
     </div>
   );
 

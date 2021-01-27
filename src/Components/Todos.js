@@ -1,21 +1,19 @@
 import React from 'react';
 import Todo  from './Todo';
 
+import todos from '../todos.json';
+
 const Todos = ({handleAddTodo}) =>{
+
+    const html = todos.map(todo => <Todo key={todo.id} content={todo.content} created_at={todo.created_at}/>);
+
     return  (
         <div>
             <div className="addTodoBtnDiv">
                 <button class="addTodoBtn" type="button" onClick={handleAddTodo}>Add Todo</button>
             </div>
             <div className="container">
-                <Todo content="complete breakfast" time="Sun 18:00" />
-                <Todo content="Learn React" time="Sun 18:00" />
-                <Todo content="Exercise daily for 10 mins" time="Sun 18:00" />
-                <Todo content="complete breakfast and Exercise daily for 10 mins" time="Sun 18:00" />
-                <Todo content="complete breakfast" time="Sun 18:00" />
-                <Todo content="complete breakfast" time="Sun 18:00" />
-                <Todo content="complete breakfast" time="Sun 18:00" />
-                <Todo content="complete breakfast" time="Sun 18:00" />
+                {html}
             </div>
         </div>
     );

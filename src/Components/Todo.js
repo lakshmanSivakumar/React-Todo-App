@@ -1,10 +1,13 @@
 import React from 'react';
 
-import trash from '../images/trash.png'
-import edit from '../images/edit.png'
-import checkMark from '../images/check-mark.png'
+import todos from '../todos.json';
 
-const Todo = ({content,time}) =>{
+import trash from '../images/trash.png';
+import edit from '../images/edit.png';
+import checkMark from '../images/check-mark.png';
+
+const Todo = ({content, created_at}) =>{
+
     return  (
         <div className="todo">
             <div className="content">
@@ -12,7 +15,7 @@ const Todo = ({content,time}) =>{
                 <img className="trash" src={trash} alt="trash"></img>
             </div>
             <div className="createdAt">
-                {time}
+                {created_at}
                 <img className="edit" src={edit} alt="edit"></img>
             </div>
             <div className="checkMarkDiv">

@@ -1,12 +1,27 @@
 import React from 'react';
-import Todo  from './Todo';
+import useForceUpdate from 'use-force-update';
 
+import Todo  from './Todo';
 import todos from '../todos.json';
 
-const Todos = ({handleAddTodo}) =>{
+const Todos = ({handleAddTodo, handleEditTodo}) =>{
 
-    const html = todos.map(todo => <Todo key={todo.id} content={todo.content} created_at={todo.created_at}/>);
+    const forceUpdate = useForceUpdate();
 
+    const deleteTodo = (id) => {
+        let index = todos.findIndex(todo => todo.id === id);
+        todos.splice(index,1);
+        console.log(todos);
+        forceUpdate();
+    }
+
+    const editTodo = (id) => {
+        handleAddTodo();
+        handleEditTodo(id);
+    }
+
+    let html = todos.map(todo => <Todo key={todo.id} id={todo.id} content={todo.content} created_at={todo.created_at} deleteTodo={deleteTodo} editTodo={editTodo}/>);
+    
     return  (
         <div>
             <div className="addTodoBtnDiv">

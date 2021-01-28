@@ -9,9 +9,14 @@ import './App.css';
 function App() {
 
   const [isOpen, setIsOpen] = useState(false);
+  const [editId, setEditId] = useState(null);
       
   const handleAddTodo = () => {
     setIsOpen(!isOpen);
+  }
+
+  const handleEditTodo = (id) => {
+     setEditId(id);
   }
 
   return (
@@ -20,8 +25,8 @@ function App() {
             <p className="title">React Todo</p>
             <img className="hamburger" src={hamburger} alt="hamburger"></img>
       </div>
-      <Todos handleAddTodo={handleAddTodo}/>
-      {isOpen && <AddTodo setIsOpen={setIsOpen} handleAddTodo={handleAddTodo}/>}
+      <Todos handleAddTodo={handleAddTodo} handleEditTodo={handleEditTodo}/>
+      {isOpen && <AddTodo editId={editId} setEditId={setEditId} handleAddTodo={handleAddTodo}/>}
     </div>
   );
 

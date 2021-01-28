@@ -2,24 +2,44 @@ import React, {useState} from 'react';
 
 import todos from '../todos.json';
 
-const AddTodo = ({setIsOpen, handleAddTodo}) => {
+const AddTodo = ({editId, setEditId, handleAddTodo}) => {
 
     const [newTodo, setNewTodo] = useState('');
+    let flagEdit = 0;
 
+    if(editId)
+        flagEdit = 1;
+    
     const handleOnChange = (e) => {
-            setNewTodo(e.target.value.trim());
+        setNewTodo(e.target.value.trim());
     }
 
     const handleAdd = () => {
-        const now = new Date();
-        const newTodoObj = {
-            id: todos.length+1,
-            content: newTodo,
-            created_at: String(now)
+        if(newTodo === '')
+            alert('Please enter a valid text');
+        else {
+            const now = new Date();
+            const newTodoObj = {
+                id: todos.length+1,
+                content: newTodo,
+                created_at: String(now)
+            }
+            todos.push(newTodoObj);
         }
-        todos.push(newTodoObj);
-        // console.log(todos);
-        setIsOpen(false);
+    }
+    
+    const handleEdit = (e) => {
+        const now = new Date();
+        let index = todos.findIndex(todo => todo.id === editId);
+        if(e.target.previousElementSibling.value.trim() === '')
+            alert('Please enter a valid text');
+        else {
+            todos[index].content = e.target.previousElementSibling.value.trim();
+            todos[index].created_at = String(now);
+            flagEdit = 0;
+            setEditId(null);
+            handleAddTodo();
+        }
     }
 
     return (
@@ -27,7 +47,8 @@ const AddTodo = ({setIsOpen, handleAddTodo}) => {
             <div className="box">
                 <span className="close" onClick={handleAddTodo}>x</span>
                 <input className="input" type="text" placeholder="Enter your Todo" required onChange={handleOnChange}></input>
-                <button className="add" type="button" onClick={handleAdd} >Add</button>
+                {!flagEdit && <button className="add" type="button" onClick={handleAdd} >Add</button>}
+                {editId && <button className="editBtn" type="button" onClick={handleEdit} >Edit</button>}
             </div>         
         </div>
     )

@@ -111,7 +111,6 @@ html {
 }
 
 .box {
-  height: 40vh;
   background-color: white;
   border-radius: 10px;
   display: flex;
@@ -145,7 +144,7 @@ html {
   border: 3px solid #0072B5;
 }
 
-.add {
+.add, .editBtn {
   width: fit-content;
   border: 3px solid #eeeeee;
   padding: 10px 15px;
@@ -159,7 +158,7 @@ html {
   font-size: 1.1em;
 }
 
-.add:hover {
+.add:hover, .editBtn:hover {
   border: 3px solid#0072B5;
   background-color:#0072B5;
   color: white;

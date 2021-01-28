@@ -2,13 +2,12 @@ import React, {useState} from 'react';
 
 import todos from '../todos.json';
 
-const AddTodo = ({editId, setEditId, handleAddTodo}) => {
+const AddTodo = ({handleAddTodo, editId, setEditId, flagEdit, setFlagEdit}) => {
 
     const [newTodo, setNewTodo] = useState('');
-    let flagEdit = 0;
 
     if(editId)
-        flagEdit = 1;
+        setFlagEdit(1);
     
     const handleOnChange = (e) => {
         setNewTodo(e.target.value.trim());
@@ -36,9 +35,6 @@ const AddTodo = ({editId, setEditId, handleAddTodo}) => {
         else {
             todos[index].content = e.target.previousElementSibling.value.trim();
             todos[index].created_at = String(now);
-            flagEdit = 0;
-            setEditId(null);
-            handleAddTodo();
         }
     }
 

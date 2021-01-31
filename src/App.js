@@ -41,11 +41,17 @@ function App() {
   return (
     <div className="App">
       <div className="nav">
-            <p className="title">React Todo</p>
-            <img className="hamburger" src={hamburgerSrc} alt="hamburger" onClick={() => handleHamburger(isClose)}></img>
+        <p className="title">React Todo</p>
+        <div className="desktopMenu">
+          <p>All Todos</p>
+          <p>Completed Todos</p>
+          <p>Today's Todos</p>
+          <p>Login</p>
+        </div>
+        <img className="hamburger" src={hamburgerSrc} alt="hamburger" onClick={() => handleHamburger(isClose)}></img>
       </div>
       <Todos handleAddTodo={handleAddTodo} handleEditTodo={handleEditTodo}/>
-      {isOpen && <AddTodo handleAddTodo={handleAddTodo} editId={editId} setEditId={setEditId} flagEdit={flagEdit} setFlagEdit={setFlagEdit}/>}
+      {isOpen && <AddTodo handleAddTodo={handleAddTodo} editId={editId} flagEdit={flagEdit} setFlagEdit={setFlagEdit}/>}
       {!isClose && <Menu/>}
     </div>
   );

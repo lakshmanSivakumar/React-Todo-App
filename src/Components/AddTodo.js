@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import todos from '../todos.json';
 import checkMark from '../images/check-mark.png';
 
-const AddTodo = ({handleAddTodo, editId, setEditId, flagEdit, setFlagEdit}) => {
+const AddTodo = ({handleAddTodo, editId, flagEdit, setFlagEdit}) => {
 
     const [newTodo, setNewTodo] = useState('');
 
@@ -27,6 +27,7 @@ const AddTodo = ({handleAddTodo, editId, setEditId, flagEdit, setFlagEdit}) => {
                 checked: 0
             }
             todos.push(newTodoObj);
+            handleAddTodo();
         }
     }
     
@@ -45,9 +46,11 @@ const AddTodo = ({handleAddTodo, editId, setEditId, flagEdit, setFlagEdit}) => {
         <div className="popUpBox">
             <div className="box">
                 <span className="popUpClose" onClick={handleAddTodo}>x</span>
-                <input className="input" type="text" placeholder="Enter your Todo" required onChange={handleOnChange}></input>
-                {!flagEdit && <button className="add" type="button" onClick={handleAdd} >Add</button>}
-                {editId && <button className="editBtn" type="button" onClick={handleEdit} >Edit</button>}
+                <form>
+                    <input className="input" type="text" placeholder="Enter your Todo" required onChange={handleOnChange}></input>
+                    {!flagEdit && <button className="add" type="submit" onSubmit={handleAdd}>Add</button>}
+                    {editId && <button className="editBtn" type="submit" onSubmit={handleEdit}>Edit</button>}
+                </form>
             </div>         
         </div>
     )

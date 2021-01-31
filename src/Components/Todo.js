@@ -17,7 +17,7 @@ const Todo = ({id, content, created_at, src, deleteTodo, editTodo, completeTodo}
                 <img className="edit" src={edit} alt="edit" onClick={() => editTodo(id)}></img>
             </div>
             <div className="checkMarkDiv">
-                <img className="checkMark" src={src} alt="check-mark" onClick={() => completeTodo(id)}></img>
+                <img className="checkMark" src={src} alt="checked or unchecked" onClick={() => completeTodo(id)}></img>
             </div>
         </div>
     );

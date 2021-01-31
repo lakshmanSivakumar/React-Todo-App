@@ -39,10 +39,11 @@ html {
 .addTodoBtn {
   width: fit-content;
   margin-top: 40px;
-  border: 3px solid teal;
+  border: 3px solid #0072B5;
   padding: 10px 15px;
   outline: none;
-  color: teal;
+  color: #0072B5;
+  background-color: white;
   font-weight: bold;
   letter-spacing: 2px;
   transition: 0.3s ease-in-out;
@@ -52,25 +53,31 @@ html {
 }
 
 .addTodoBtn:hover {
-  border: 3px solid#0072B5;
-  background-color:#0072B5;
+  border: 3px solid #0072B5;
+  background-color: #0072B5;
   color: white;
 }
 
 .container {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 20px;
+  gap: 40px;
   justify-content: center;
   padding: 40px;
 }
 
 .todo {
-  border-radius: 10px;
+  border-radius: 3px;
   display: flex;
   flex-flow: column wrap;
-  border: 3px solid #eeeeee;
   padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  transition: 0.3s ease-in-out;
+}
+
+.todo:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  transform: translate(0px, -10px);
 }
 
 .content {
@@ -110,17 +117,21 @@ html {
   justify-content: center;
 }
 
-.box {
+.box{
+  position: relative;
   background-color: white;
   border-radius: 10px;
   display: flex;
-  flex-flow: column wrap;
-  justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: center;
   align-items: center;  
-  padding: 40px 40px 60px 40px;
+  padding: 40px;
 }
 
-.close {
+.popUpClose {
+  position: absolute;
+  right: 10px;
+  top: 10px;
   cursor: pointer;
   width: 25px;
   height: 25px;
@@ -133,11 +144,13 @@ html {
 }
 
 .input {
+  width: 200px;
   font-size: 1.1em;
   padding: 10px 15px;
   border: 3px solid #eeeeee;
   outline: none;
   transition: 0.3s ease-in-out;
+  margin-right: 10px;
 }
 
 .input:focus {
@@ -162,6 +175,23 @@ html {
   border: 3px solid#0072B5;
   background-color:#0072B5;
   color: white;
+}
+
+.menu {
+  padding: 40px;
+  position: fixed;
+  top: 0;
+  left: -50%;
+  height: 100vh;
+  width: 50%;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 10px 0px 50px;
+  animation: example 0.5s ease-in-out forwards;
+}
+
+@keyframes example {
+  from  {left: -50%;}
+  to {left: 0%;}
 }
 
 @media screen and (min-width: 600px) {
